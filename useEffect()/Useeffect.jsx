@@ -1,20 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import { useEffect, useState } from "react";
 
-function ExampleComponent() {
-  const [count, setCount] = useState(0);
+function Useeffect() {
+  const [isHungry, setIsHungry] = useState(true);
+  const [breathefire, setBreathefire] = useState(true)
 
   useEffect(() => {
-    document.title = `You clicked ${count} times`;
-  }, []);
+    if (isHungry) {
+      console.log("Time to feed Sparky!");
+      setIsHungry(false);
+    }
+  }, [isHungry]);
+
+  useEffect(() => {
+    if (breathefire) {
+      console.log("breathe fire!!!!!");
+      setBreathefire(false)
+    }
+  }, [breathefire])
 
   return (
-    <div>
-      <p>You clicked {count} times</p>
-      <button onClick={() => setCount(count + 1)}>
-        Click me
-      </button>
-    </div>
-  );
+    <>
+      <button onClick={() => setIsHungry(true)}>Make Sparky hungry</button>
+      <button onClick={() => setBreathefire(true)}>Make Sparky breathe fire</button>
+    </>
+  )
 }
 
-export default ExampleComponent;
+export default Useeffect
